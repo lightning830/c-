@@ -1,3 +1,5 @@
+// insertの時keyが同じだった場合の動作を定義していない、まだ直していない
+
 #include<bits/stdc++.h>//全部includeしてくれる。おれはめんどくさいからいつもこうしてる
 using namespace std;
 #define rep(i,n) for(int i = 0; i < (n); i++)

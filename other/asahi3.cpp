@@ -25,10 +25,7 @@ void Table<T>::insert(string s, T x){
 }
 
 int main() {
-    // string s,t;
-    // cin >> s >> t;
-    // if(s > t) cout << s << ">" << t << endl;
-    // else cout << s << "<" << t << endl;
+
     Table<int> table;
     table.insert("abc", 8);
     Table<string> table2;
