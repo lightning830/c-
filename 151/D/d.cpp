@@ -2,6 +2,7 @@
 // #include<string>
 // #include<vector>
 // #include<queue>
+// 幅優先探索
 #include<bits/stdc++.h>
 // #include<utility>
 using namespace std;

@@ -4,6 +4,7 @@ using namespace std;
 using P = pair<int, int>;
 using ll = long long;
 const int INF = 1001001001;
+const ll LINF = 1e18;
 
 int main() {
     vector<string> v;                  

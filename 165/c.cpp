@@ -1,3 +1,4 @@
+// 深さ優先探索
 #include<bits/stdc++.h>
 using namespace std;
 #define rep(i,n) for(int i = 0; i < (n); i++)
@@ -10,11 +11,11 @@ vector<int> a, b, c, d;
 
 int main() {
     cin >> n >> m >> q;
-    a = b = c = d = vector<int>(q);
+    a = b = c = d = vector<int>(q);//a, b, c, d のvectorを定義
     rep(i, q){
         cin >> a[i] >> b[i] >> c[i] >> d[i];
     }
-    void dfs(vector<int> A);
+    void dfs(vector<int> A);//下で定義してるから、ここで定義しないとダメ
     dfs(vector<int>(1,1));
     cout << ans << endl;
     return 0;

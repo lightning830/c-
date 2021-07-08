@@ -1,6 +1,5 @@
 #include<bits/stdc++.h>//全部includeしてくれる。おれはめんどくさいからいつもこうしてる
 using namespace std;
-#define rep(i,n) for(int i = 0; i < (n); i++)
 
 #define HASHSIZE 3
 
@@ -49,7 +48,7 @@ template<class T> int Table<T>::hash(string str){
     int n = 0;
     while(*str_char != '\0'){//strのasciiコードの和を計算
         n += *str_char;
-        str_char++;
+        str_char++;//次の文字
     }
     return abs(n%HASHSIZE);//modをとり値をhashsizeに収める
 }
@@ -66,9 +65,9 @@ template<class T> void Table<T>::insert(string s, T x){
         return;
     }
     while(1){//すでにあるときはキーがすでに存在するか探索
-        if(!s.compare(p->key)){//存在したとき、valueを上書き
+        if(!s.compare(p->key)){//存在したとき、valueを上書き sとp->keyが同じかどうか。同じなら0
             p->value = x;
-            delete tmp;
+            delete tmp;//tmpが不要になったからメモリ解放
             return;
         }
         if(p->next == NULL){//ついそ存在しなかったとき、一番後ろにノードをつける
@@ -90,15 +89,17 @@ template<class T> void Table<T>::operator()(string s){
         }
         p = p->next;
     }
+    cout << "nothing" << endl;
 }
 
 template<class T> void Table<T>::operator-=(string s){
     int hash_num = hash(s);
     struct Node* p_pre = hashtable[hash_num];
     struct Node* p_now = hashtable[hash_num];
+
+    if(p_pre == NULL) return;//何もないから終了
     p_now = p_now->next;
 
-    if(p_pre == NULL) return;
     if(!s.compare(p_pre->key)){
         hashtable[hash_num] = p_now;
         delete(p_pre);
@@ -110,6 +111,7 @@ template<class T> void Table<T>::operator-=(string s){
             delete(p_now);
             return;
         }
+        //次を見ていく
         p_now = p_now->next;
         p_pre = p_pre->next;
     }
@@ -128,29 +130,29 @@ int main() {
     table("abb");//14 キーabbをtableから探索
     table("abbc");//3
     table("a");//2
-    table.check();
+    // table.check();
     table-="aab";//キーaabをtableから削除
     table-="abc";
-    table.check();
-    // table("aab");//NOTHING キーaabは削除済みでないのでNOTHING
-    // table-="bbc";
-    // table("bbc");//NOTHING　キーbbcは削除済み
-    // table("ccc");//10 キーcccを探索
-    // cout << endl;
+    // table.check();
+    table("aab");//NOTHING キーaabは削除済みでないのでNOTHING
+    table-="bbc";
+    table("bbc");//NOTHING　キーbbcは削除済み
+    table("ccc");//10 キーcccを探索
+    cout << endl;
 
     Table<string> table2;//同様に値がstring型であるTable型tableを作成して実行
     table2.insert("abc", "zz");
     table2.insert("aab", "tt");
     table2.insert("abb", "ww");
     table2.insert("ccc", "ee");
-    table2.check();
+    // table2.check();
 
     table2("abb");//ww
     table2("ccc");//ee
     table2-="abc";
     table2("abc");//なにも返さない
     table2("abb");//ww
-    table2.check();
+    // table2.check();
 
 
     return 0;
