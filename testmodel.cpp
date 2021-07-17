@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
   string line;
   int index = 1;
   while (!cin.eof()) {
-    getline(cin, line);
+    getline(cin, line);//lineに1行分の文字列が格納される
     cout << "line[" << index++ << "]:" << line << "\n";
   }
   return 0;

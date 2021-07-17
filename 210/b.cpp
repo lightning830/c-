@@ -31,16 +31,17 @@ const ll LINF = 1e18;
 
 
 int main() {
-    vector<string> v;                  
-    string str, s;                      
-    getline(cin,str);               
-    stringstream ss{str};             
-    while ( getline(ss, s, ' ') ){    
-        v.push_back(s);
+    ll n; cin >> n;
+    string s; cin >> s;
+    int x;
+    rep(i, SIZE(s)){
+        if(s[i] == '1'){
+            x = i;
+            break;
+        }
     }
-    for (const string& s : v){        
-        cout << s << endl;
-    }
+    if(x % 2)cout << "Aoki" << endl;
+    else cout << "Takahashi" << endl;
 
     // cout << ans << endl;
     return 0;

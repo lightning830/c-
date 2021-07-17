@@ -31,15 +31,16 @@ const ll LINF = 1e18;
 
 
 int main() {
-    vector<string> v;                  
-    string str, s;                      
-    getline(cin,str);               
-    stringstream ss{str};             
-    while ( getline(ss, s, ' ') ){    
-        v.push_back(s);
-    }
-    for (const string& s : v){        
-        cout << s << endl;
+    int n; cin >> n;
+    int a, x, y;
+    cin >> a >> x >> y;
+    if(n <= a){
+        cout << x * n << endl;
+    }else{
+        int sum = 0;
+        sum += x*a;
+        sum += (n-a)*y;
+        cout << sum << endl;
     }
 
     // cout << ans << endl;

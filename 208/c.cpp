@@ -18,19 +18,13 @@ int main() {
         b[i] = A;
     } 
     sort(b.begin(), b.end());
-    // rep(i, n) cout << b[i] << endl;
     rep(i, n){
         memo[b[i]] = 0;
     }
 
-    // for(auto&& it:memo){
-    //     cout << it.first << endl;
-    // }
-
     if(n <= k){
         ll add = k / n;
         k -= n * add;
-        // cout << "add" << add << endl;
         for(auto&& it:memo){
             it.second += add;
         }
@@ -42,9 +36,6 @@ int main() {
             k--;
         }
     }
-    // for(auto&& it:memo){
-    //     cout << it.second << endl;
-    // }
 
     rep(i, n){
         cout << memo[a[i]] << endl;

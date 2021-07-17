@@ -29,19 +29,30 @@ const int INF = 1001001001;
 const ll LINF = 1e18;
 #pragma endregion
 
-
+// k個までmapで種類数えて、k以上からは最初の数を除き、新たな数を追加する。
 int main() {
-    vector<string> v;                  
-    string str, s;                      
-    getline(cin,str);               
-    stringstream ss{str};             
-    while ( getline(ss, s, ' ') ){    
-        v.push_back(s);
-    }
-    for (const string& s : v){        
-        cout << s << endl;
-    }
+    ll n, k;
+    cin >> n >> k;
+    ll c[n];
+    map<ll, ll> m;
+    rep(i, n){
+        cin >> c[i];
+    } 
+    ll ans = 0;
+    ll s = 0;//現在の最大値
+    rep(i, n){
+        // 追加
+        if(m[c[i]] == 0) s++;
+        m[c[i]]++;
+        if(i >= k){
+            // k以上からは先頭を削除
+            if(m[c[i-k]] > 0) m[c[i-k]]--;
+            // 削除して種類がなくなったら最大値減らす
+            if(m[c[i-k]] == 0) s--;
+        }
+        chmax(ans, s);
 
-    // cout << ans << endl;
+    }
+    cout << ans << endl;
     return 0;
 }
