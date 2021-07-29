@@ -114,17 +114,22 @@ public:
 
 
 int main() {
-    vector<string> v;                  
-    string str, s;                      
-    getline(cin,str);               
-    stringstream ss{str};             
-    while ( getline(ss, s, ' ') ){    
-        v.push_back(s);
-    }
-    for (const string& s : v){        
-        cout << s << endl;
-    }
+    ll ans = 0;
+    ll n; cin >> n;
+    ll l[n];
+    rep(i, n) cin >> l[i];
 
-    // cout << ans << endl;
+    for(ll i = 0; i <= n-3; i++){
+        for(ll j = i; j <= n-2; j++){
+            for(ll k = j; k <= n-1; k++){
+                if(l[i] == l[j] || l[i] == l[k] || l[j] == l[k]) continue;
+                if(l[i]+l[j]>l[k] && l[i]+l[k]>l[j] && l[j]+l[k]>l[i]){
+                    ans++;
+                    // cout << i+1 << j+1 << k+1 << endl;
+                }
+            }
+        }
+    }
+    cout << ans << endl;
     return 0;
 }

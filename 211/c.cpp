@@ -1,3 +1,5 @@
+// 動的計画法
+
 #pragma region Macros
 #include<bits/stdc++.h>
 using namespace std;
@@ -114,17 +116,19 @@ public:
 
 
 int main() {
-    vector<string> v;                  
-    string str, s;                      
-    getline(cin,str);               
-    stringstream ss{str};             
-    while ( getline(ss, s, ' ') ){    
-        v.push_back(s);
+    string s; cin >> s;
+    string t = "chokudai";
+    V<V<mint>> dp(SIZE(s)+1, V<mint>(9));
+    rep(i, SIZE(s)+1) dp[i][0] = 1;
+    rep(i, SIZE(s)){
+        rep(j, 8){
+            if(s[i] != t[j]){
+                dp[i+1][j+1] = dp[i][j+1];
+            }else{
+                dp[i+1][j+1] = dp[i][j+1] + dp[i][j];
+            }
+        }
     }
-    for (const string& s : v){        
-        cout << s << endl;
-    }
-
-    // cout << ans << endl;
+    cout << dp[SIZE(s)][8] << endl;
     return 0;
 }

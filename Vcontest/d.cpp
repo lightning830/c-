@@ -114,17 +114,18 @@ public:
 
 
 int main() {
-    vector<string> v;                  
-    string str, s;                      
-    getline(cin,str);               
-    stringstream ss{str};             
-    while ( getline(ss, s, ' ') ){    
-        v.push_back(s);
-    }
-    for (const string& s : v){        
-        cout << s << endl;
-    }
+    ll x; cin >> x;
+    V<int> dp(1000000);
 
-    // cout << ans << endl;
+    dp[0] = 1;
+    rep(i, x){
+        rep(j, 6){
+            if(dp[i]==1){
+                dp[i+100+j] = 1;
+            }
+        }
+    }
+    
+    cout << dp[x] << endl;
     return 0;
 }

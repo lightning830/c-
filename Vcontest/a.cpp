@@ -114,16 +114,17 @@ public:
 
 
 int main() {
-    vector<string> v;                  
-    string str, s;                      
-    getline(cin,str);               
-    stringstream ss{str};             
-    while ( getline(ss, s, ' ') ){    
-        v.push_back(s);
+    int x, y;
+    cin >> x >> y;
+
+    for(int i = 0; i <= x; i++){
+        int a = i, b = x - i;
+        if(2*a+4*b == y && a+b==x){
+            cout << "Yes" << endl;
+            return 0;
+        }
     }
-    for (const string& s : v){        
-        cout << s << endl;
-    }
+    cout << "No" << endl;
 
     // cout << ans << endl;
     return 0;

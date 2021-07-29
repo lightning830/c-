@@ -1,3 +1,4 @@
+// 幅優先探索
 #pragma region Macros
 #include<bits/stdc++.h>
 using namespace std;
@@ -114,17 +115,42 @@ public:
 
 
 int main() {
-    vector<string> v;                  
-    string str, s;                      
-    getline(cin,str);               
-    stringstream ss{str};             
-    while ( getline(ss, s, ' ') ){    
-        v.push_back(s);
+        ll n, m; cin >> n >> m;
+    V<V<ll>> g(n);
+
+    rep(i, m){
+        ll a, b;
+        cin >> a >> b;
+        a--; b--;
+        g[a].pb(b);
+        g[b].pb(a);
     }
-    for (const string& s : v){        
-        cout << s << endl;
+    queue<ll> q;
+    V<ll> dist(n, 0);
+    V<mint> toori(n, 0);
+    toori[0] = 1;
+    q.push(0);
+    while(!q.empty()){
+        int tmp = q.front();
+        q.pop();
+        auto update = [&](int i, int j){
+            if(i == 0) return;//始点でない
+            if(dist[i] != 0){//訪れていても距離が同じならおｋ
+                if(dist[i] == dist[j]+1){
+                    toori[i]+=toori[j];
+                    return;
+                }else return;
+            }
+            //訪れてないなら
+            toori[i]+=toori[j];
+            dist[i] = dist[j] + 1;
+            q.push(i);
+        };
+        rep(i, g[tmp].size()){
+            update(g[tmp][i], tmp);
+        }
     }
 
-    // cout << ans << endl;
+    cout << toori[n-1] << endl;
     return 0;
 }

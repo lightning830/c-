@@ -112,19 +112,15 @@ public:
 
 #pragma endregion
 
+ll sum(ll n){
+    return n*(n+1)/2;
+}
 
 int main() {
-    vector<string> v;                  
-    string str, s;                      
-    getline(cin,str);               
-    stringstream ss{str};             
-    while ( getline(ss, s, ' ') ){    
-        v.push_back(s);
-    }
-    for (const string& s : v){        
-        cout << s << endl;
-    }
+    ll x; cin >> x;
+    ll xx = (ll)sqrt(x);
+    while(x > sum(xx)) xx++;
 
-    // cout << ans << endl;
+    cout << xx << endl;
     return 0;
 }

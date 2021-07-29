@@ -113,18 +113,28 @@ public:
 #pragma endregion
 
 
-int main() {
-    vector<string> v;                  
-    string str, s;                      
-    getline(cin,str);               
-    stringstream ss{str};             
-    while ( getline(ss, s, ' ') ){    
-        v.push_back(s);
-    }
-    for (const string& s : v){        
-        cout << s << endl;
-    }
 
-    // cout << ans << endl;
+int main() {
+    ll n, k; cin >> n >> k;
+    ll a[n];
+    rep(i, n) cin >> a[i];
+
+    M m;
+
+    ll s = 0;
+    ll now = 0;
+    rep(i, n){
+        // s += a[i];
+        now += a[i];
+        if(i == k-1) s += now;
+        if(i >= k){
+            now -= a[i-k];
+            s += now;
+            // cout << now << endl;
+        }
+
+
+    }
+    cout << s << endl;
     return 0;
 }

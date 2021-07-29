@@ -1,21 +1,21 @@
-const int mod = 1e9+7;
+const int MOD = 1e9+7;
 class mint {
     long long x;
 public:
-    mint(long long x=0) : x((x%mod+mod)%mod) {}
+    mint(long long x=0) : x((x%MOD+MOD)%MOD) {}
     mint operator-() const { 
       return mint(-x);
     }
     mint& operator+=(const mint& a) {
-        if ((x += a.x) >= mod) x -= mod;
+        if ((x += a.x) >= MOD) x -= MOD;
         return *this;
     }
     mint& operator-=(const mint& a) {
-        if ((x += mod-a.x) >= mod) x -= mod;
+        if ((x += MOD-a.x) >= MOD) x -= MOD;
         return *this;
     }
     mint& operator*=(const  mint& a) {
-        (x *= a.x) %= mod;
+        (x *= a.x) %= MOD;
         return *this;
     }
     mint operator+(const mint& a) const {
@@ -37,9 +37,9 @@ public:
         if (t&1) a *= *this;
         return a;
     }
-    // for prime mod
+    // for prime MOD
     mint inv() const {
-        return pow(mod-2);
+        return pow(MOD-2);
     }
     mint& operator/=(const mint& a) {
         return (*this) *= a.inv();

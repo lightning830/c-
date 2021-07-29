@@ -114,17 +114,15 @@ public:
 
 
 int main() {
-    vector<string> v;                  
-    string str, s;                      
-    getline(cin,str);               
-    stringstream ss{str};             
-    while ( getline(ss, s, ' ') ){    
-        v.push_back(s);
-    }
-    for (const string& s : v){        
-        cout << s << endl;
-    }
+    ll n, m;
+    cin >> n >> m;
+    V<V<ll>> g;
+    UnionFind uf(n);
+    rep(i, m){
+        int a, b;
+        cin >> a >> b;
+        a--;b--;
 
-    // cout << ans << endl;
+    }
     return 0;
 }

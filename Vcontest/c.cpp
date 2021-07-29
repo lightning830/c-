@@ -114,17 +114,15 @@ public:
 
 
 int main() {
-    vector<string> v;                  
-    string str, s;                      
-    getline(cin,str);               
-    stringstream ss{str};             
-    while ( getline(ss, s, ' ') ){    
-        v.push_back(s);
+    ll n; cin >> n;
+    ll a[n];
+    a[0] = 1;
+    for(ll i = 1; i< n;i++){
+        a[i] = a[i-1]*(i+1);
+        a[i] %= MOD;
+        // cout << a[i] << endl;
     }
-    for (const string& s : v){        
-        cout << s << endl;
-    }
-
-    // cout << ans << endl;
+    cout << a[n-1]%MOD << endl;
+    // cout << MOD << endl;
     return 0;
 }
