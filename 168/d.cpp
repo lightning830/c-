@@ -20,14 +20,13 @@ int main() {
     int INF = 1001001001;
     vector<int> dist(n, INF);
     q.push(0);
-    // int now = 1;
     while(!q.empty()){
         int tmp = q.front();
         q.pop();
-        auto update = [&](int i, int j){
-            if(dist[i] != INF) return;
-            dist[i] = j;
-            q.push(i);
+        auto update = [&](int i, int j){//次の行先候補, どこからきたか
+            if(dist[i] != INF) return;//行先が既に訪れていたら何もしない
+            dist[i] = j;//どこからきたかをメモ
+            q.push(i);//次の行先をpush
         };
         rep(i, g[tmp].size()){
             update(g[tmp][i], tmp);
@@ -43,7 +42,7 @@ int main() {
     }
     cout << "Yes" << endl;
     for(int i = 1; i < n; i++){
-        cout << dist[i]+1 << endl;
+        cout << dist[i]+1 << endl;//どこからきたか=逆方向から言えばどこに向かえば1につくか
     }
 
     return 0;

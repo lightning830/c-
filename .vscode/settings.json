@@ -76,6 +76,7 @@
         "xtree": "cpp",
         "xutility": "cpp",
         "xlocnum": "cpp",
-        "xtr1common": "cpp"
+        "xtr1common": "cpp",
+        "xlocinfo": "cpp"
     }
 }

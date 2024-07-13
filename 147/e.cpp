@@ -10,7 +10,7 @@ using bs = bitset<D2>;
 
 int a[100][100];
 bs dp[90][90];
-
+//bitDP?
 int main() {
     int h, w;
     cin >> h >> w;

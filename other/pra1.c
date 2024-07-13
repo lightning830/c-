@@ -1,18 +1,23 @@
 #include <stdio.h>
-#include<stdlib.h>
 int main(void){
-    int n,i,j;
-    printf("enter number");
-    scanf ("%d",&n);
+    void Print(int x);
+    int x;
+    scanf("%d",&x);
+    Print(x);
 
-    for(i=1; i<=n; i++){
-        for(j=1; j<=n; j++){
-            printf("%d", j%10);
-        }
-        system("cls");
-        printf("\n");
+    for(int i = x; i > 0;i--){
+    for(int j = 0; j < 2*i-1; j++){
+        printf("*");
     }
-
-
+    printf("\n");
+}
 }
 
+void Print(int x){
+    if(x <= 0) return;
+    for(int i = 0; i < 2*x-1; i++){
+        printf("#");
+    }
+    printf("\n");
+    Print(x-1);
+}

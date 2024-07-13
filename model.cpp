@@ -9,8 +9,8 @@ const int MOD = 1e9+7;
 
 #define rep(i,n) for(ll i = 0; i < (n); i++)
 #define repd(i,n) for(ll i = n-1; i >= 0; i--)
-#define FOR(i,a,b) for(ll i = a; i <= ll(b); i++)
-#define FORD(i,a,b) for(ll i = a; i >= ll(b); i--)
+#define FOR(i,a,b) for(ll i = a; i < ll(b); i++)
+#define FORD(i,a,b) for(ll i = a-1; i >= ll(b); i--)
 #define FORA(i,I) for(const auto& i:I)
 
 #define ALL(x) x.begin(),x.end() 
